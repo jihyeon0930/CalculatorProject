@@ -1,8 +1,6 @@
 package example.calculator;
 
-import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Calculator {
 
@@ -33,6 +31,7 @@ public class Calculator {
                 System.out.println("다시 입력해 주세요");
         }
 
+        //연산 결과 추가
         results.add(result);
         return result;
     }
@@ -43,5 +42,10 @@ public class Calculator {
 
     public void setResults(ArrayList<Integer> results) {
         this.results = results;
+    }
+
+    //가장 먼저 저장된 데이터 삭제 기능
+    public void resultRemove() {
+        results.remove(0);
     }
 }

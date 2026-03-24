@@ -29,10 +29,15 @@ public class Main {
             //result = calculatorFunction(op, num1, num2);
 
             System.out.println(num1 +" "+ op + " " + num2 +" = "+result);
-            System.out.print("계속 하려면 아무 키, 종료하려면 exit 입력 : ");
+            System.out.print("계속 하려면 아무 키, 종료하려면 exit 입력(삭제시 remove 입력) : ");
             q = sc.next();
 
-        }while (!q.equals("exit"));
+        }while (!q.equals("exit") && !q.equals("remove"));
+
+        //remove기능
+        if (q.equals("remove")) {
+            calculator.resultRemove();
+        }
 
         //getter
         ArrayList<Integer> results = calculator.getResults();
