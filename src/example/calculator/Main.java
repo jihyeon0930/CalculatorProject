@@ -1,5 +1,7 @@
 package example.calculator;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -24,13 +26,18 @@ public class Main {
 
             //Calculator 클래스
             int result = calculator.calculate(op, num1, num2);
-//            result = calculatorFunction(op, num1, num2);
+            //result = calculatorFunction(op, num1, num2);
 
             System.out.println(num1 +" "+ op + " " + num2 +" = "+result);
             System.out.print("계속 하려면 아무 키, 종료하려면 exit 입력 : ");
             q = sc.next();
 
         }while (!q.equals("exit"));
+
+        //getter
+        ArrayList<Integer> results = calculator.getResults();
+        System.out.println("계산 목록 : " + results);
+        
 
         System.out.println(":::계산기 프로그램 종료");
     }

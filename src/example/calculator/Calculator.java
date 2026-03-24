@@ -6,8 +6,10 @@ import java.util.Scanner;
 
 public class Calculator {
 
+    //연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성
     private ArrayList<Integer> results = new ArrayList<>();
 
+    //양의 정수 2개와 연산기호 매개변수로 받기
     public int calculate(char op, int num1, int num2) {
         int result = 0;
         switch (op) {
@@ -33,5 +35,13 @@ public class Calculator {
 
         results.add(result);
         return result;
+    }
+
+    public ArrayList<Integer> getResults() {
+        return results;
+    }
+
+    public void setResults(ArrayList<Integer> results) {
+        this.results = results;
     }
 }
