@@ -35,14 +35,25 @@ public class Main {
             Number result = arithmeticCalculator.calculate(num1, num2, op);
 
             System.out.println(num1 +" "+ op.getSymbol() + " " + num2 +" = "+result);
-            System.out.print("계속 하려면 아무 키, 종료하려면 exit 입력(삭제시 remove 입력) : ");
+            System.out.print("계속 하려면 아무 키, 종료하려면 exit, 더보기 more 입력 : ");
             q = sc.next();
 
-        }while (!q.equals("exit") && !q.equals("remove"));
+        }while (!q.equals("exit") && !q.equals("more"));
+        //반복 종료
 
-        //remove기능
-        if (q.equals("remove")) {
-            arithmeticCalculator.resultRemove();
+        if(q.equals("more")) {
+            System.out.println("1. 삭제 remove 입력");
+            System.out.println("2. 특정 값보다 큰 결과 출력");
+            System.out.print("숫자 입력 : ");
+            String sub = sc.next();
+            if(sub.equals("1")){
+                arithmeticCalculator.resultRemove();//remove기능
+            } else if(sub.equals("2")) {
+                System.out.print("기준 값 입력 : ");
+                double value = sc.nextDouble();
+                arithmeticCalculator.numfilter(value);//filter 기능
+            }
+
         }
 
         //getter

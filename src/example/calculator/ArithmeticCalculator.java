@@ -1,6 +1,7 @@
 package example.calculator;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class ArithmeticCalculator {
 
@@ -51,13 +52,26 @@ public class ArithmeticCalculator {
         return results;
     }
 
-    public void setResults(ArrayList<Number> results) {
-        this.results = results;
-    }
+//    public void setResults(ArrayList<Number> results) {
+//        this.results = results;
+//    }
 
     //가장 먼저 저장된 데이터 삭제 기능
     public void resultRemove() {
         results.remove(0);
+    }
+
+    //Scanner로 입력받아 저장된 값들중 입력값보다 큰 값 출력
+    public void numfilter(double value) { //double타입으로 value받아옴(기준 분류)
+        String result = results.stream() //흐름 생성
+                .filter(n->n.doubleValue()>value) //조건에 맞는것만 거름
+                //리스트의 각 요소를 double로 바꿔 value와 비교 후 value보다 큰 값을 n에 넣음
+                //왜? value가 double이고 n은 results가 Number이라 Number이가 때문에 그냥 비교 불가
+                .map(n->String.valueOf(n)) // 데이터 변환 : 숫자 -> 문자 (joining()사용 위해)
+                //n.toString()과 동일 (String::valueOf라는 메서드 참조로도 변경 가능)
+                .collect(Collectors.joining(", ")); //결과 만들기
+                // joining() 괄호 안 기준으로 이어붙임
+        System.out.println("result : [" + result + "]");
     }
 
 }
