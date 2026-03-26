@@ -58,6 +58,10 @@ public class ArithmeticCalculator {
 
     //가장 먼저 저장된 데이터 삭제 기능
     public void resultRemove() {
+        if(results.isEmpty()) { //isEmpty() : 리스트 비어있음 = true, 값 있음 = false
+            System.out.println("삭제할 결과가 없습니다.");
+            return;
+        }
         results.remove(0);
     }
 
@@ -71,7 +75,7 @@ public class ArithmeticCalculator {
                 //n.toString()과 동일 (String::valueOf라는 메서드 참조로도 변경 가능)
                 .collect(Collectors.joining(", ")); //결과 만들기
                 // joining() 괄호 안 기준으로 이어붙임
-        System.out.println("result : [" + result + "]");
+        System.out.println("기준 값 보다 큰 결과 : [" + result + "]");
     }
 
 }

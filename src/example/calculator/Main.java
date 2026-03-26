@@ -28,13 +28,19 @@ public class Main {
             System.out.print("두번 째 수 입력 : ");
             String num2Str = sc.next();
 
-            Number num1 = parseNumber(num1Str);
-            Number num2 = parseNumber(num2Str);
+            try {
+                Number num1 = parseNumber(num1Str);
+                Number num2 = parseNumber(num2Str);
 
-            //arithmeticCalculator 기능 가져오기
-            Number result = arithmeticCalculator.calculate(num1, num2, op);
+                //arithmeticCalculator 기능 가져오기
+                Number result = arithmeticCalculator.calculate(num1, num2, op);
 
-            System.out.println(num1 +" "+ op.getSymbol() + " " + num2 +" = "+result);
+                System.out.println(num1 +" "+ op.getSymbol() + " " + num2 +" = "+result);
+            } catch (NumberFormatException e) {
+                System.out.println("숫자를 올바르게입력해주세요.");
+                continue;
+            }
+
             System.out.print("계속 하려면 아무 키, 종료하려면 exit, 더보기 more 입력 : ");
             q = sc.next();
 
@@ -49,17 +55,24 @@ public class Main {
             if(sub.equals("1")){
                 arithmeticCalculator.resultRemove();//remove기능
             } else if(sub.equals("2")) {
-                System.out.print("기준 값 입력 : ");
-                double value = sc.nextDouble();
+                double value;
+                while (true) {
+                    System.out.print("기준 값 입력 : ");
+                    try {
+                        value = sc.nextDouble();
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("숫자를 입력해주세요.");
+                        sc.next();//잘못된 값 버림
+                    }
+                }
                 arithmeticCalculator.numfilter(value);//filter 기능
             }
-
         }
 
         //getter
         ArrayList<Number> results = arithmeticCalculator.getResults();
         System.out.println("계산 목록 : " + results);
-        
 
         System.out.println(":::계산기 프로그램 종료");
     }
@@ -72,5 +85,4 @@ public class Main {
             return Integer.parseInt(input);
         }
     }
-
 }
